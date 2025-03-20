@@ -32,7 +32,12 @@ class API_Rick_Morty(API_consumer):
         return self.__URL
 
     def extract(self, id):
-    # Atividade 3, que resultará o segundo commit
+        URL = self.URL + str(id)
+        try:
+            dado = requests.get(URL).json()
+            return ((dado.get('id'), dado.get('name'), dado.get('species')))
+        except:
+            pass
         pass
 
 class API_Star_Wars(API_consumer):
